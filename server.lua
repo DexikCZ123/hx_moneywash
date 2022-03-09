@@ -35,6 +35,7 @@ PerformHttpRequest(Config.Webhook, function(err, text, headers) end, 'POST', jso
 end
 
 if distance > 5 then
+                ---THERE YOU CAN BAN PLAYER I DONT RECOMMENDED
     local trigger = {
         {
             ["color"] = Config.WebhookColour,
