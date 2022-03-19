@@ -29,7 +29,7 @@ end)
 
 
 Citizen.CreateThread(function()
-
+	while true do
 local sleep = 1500 
 local player = PlayerPedId()
 local playerCoords = GetEntityCoords(player)
@@ -71,7 +71,8 @@ for k,v in ipairs(Config.Money) do
         
     end
    end
-  Wait(sleep)
+  end
+ Wait(sleep)
  end
 end)
 
