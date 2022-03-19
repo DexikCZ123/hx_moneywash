@@ -29,25 +29,22 @@ end)
 
 
 Citizen.CreateThread(function()
-	while true do
-		Wait(10)
 
+local sleep = 1500 
 local player = PlayerPedId()
 local playerCoords = GetEntityCoords(player)
 
 
 
-
 for k,v in ipairs(Config.Money) do
     local distance = #(playerCoords - v)
-
-if distance  <= 3 then
+ if distance <= 5 then
+ sleep = 0 
+ if distance <= 3 then
     ESX.ShowFloatingHelpNotification(_U('press_e'),vector3(v))
     if distance <= 1.5 and IsPedOnFoot(player) and  IsControlJustReleased(0, 38) then
-
-Wait(20)
-FreezeEntityPosition(PlayerPedId(), true)
-ClearPedTasksImmediately(PlayerPedId())
+    FreezeEntityPosition(PlayerPedId(), true)
+    ClearPedTasksImmediately(PlayerPedId())
         TriggerEvent(
             'mythic_progbar:client:progress',
             {
@@ -65,17 +62,16 @@ ClearPedTasksImmediately(PlayerPedId())
             },
             function(status) 
                 if not status then
-                    ClearPedTasks(playerPed)
-                    FreezeEntityPosition(PlayerPedId(), false)
+                ClearPedTasks(playerPed)
+                FreezeEntityPosition(PlayerPedId(), false)
                 TriggerServerEvent('moneywash:process')
             end
-            end
+          end
         )
         
-
-end
-end
+    end
+   end
+  Wait(sleep)
  end
-end
 end)
 
