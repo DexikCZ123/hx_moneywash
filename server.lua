@@ -15,10 +15,10 @@ AddEventHandler('moneywash:process', function()
     local pCoords = xPlayer.getCoords(true)
     local playerId = xPlayer.source
     local name = GetPlayerName(playerId)
-local countMoney = xPlayer.getAccount('black_money').money
-for k,v in ipairs(Config.Money) do
+    local countMoney = xPlayer.getAccount('black_money').money
+ for k,v in ipairs(Config.Money) do
     
-local distance = #(pCoords - v)
+ local distance = #(pCoords - v)
 
 if distance <= 5 then
     local trigger2 = {
@@ -58,8 +58,8 @@ elseif countMoney >= 1 then
     local random = math.random(5,10)
     local money = math.ceil((countMoney / 10) * 10)
     if random == 5 then
-    xPlayer.removeAccountMoney("black_money", countMoney)
-    xPlayer.addAccountMoney("money", (money * 0.95))
+        xPlayer.removeAccountMoney("black_money", countMoney)
+        xPlayer.addAccountMoney("money", (money * 0.95))
     elseif random == 6 then
         xPlayer.removeAccountMoney("black_money", countMoney)
         xPlayer.addAccountMoney("money", (money * 0.94))
@@ -76,7 +76,7 @@ elseif countMoney >= 1 then
         xPlayer.removeAccountMoney("black_money", countMoney)
         xPlayer.addAccountMoney("money", (money * 0.9))
     end
-end
-end
-end
+   end
+  end
+ end
 end)
